@@ -48,7 +48,8 @@ jobs:
           docker push ardamutlu/auth:latest
           docker push ardamutlu/dashboard:latest
 
-      - uses: dorny/paths-filter@v2
+      - name: Check changed paths
+        uses: dorny/paths-filter@v2
         id: changes
         with:
           filters:
