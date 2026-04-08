@@ -52,16 +52,13 @@ jobs:
         uses: dorny/paths-filter@v2
         id: changes
         with:
-          filters:
-            common-react-ui:
-              - 'packages/common-react-ui/**'
+          filters: '{"common-react-ui":["packages/common-react-ui/**"]}'
 
       - name: Publish common-react-ui
         if: steps.changes.outputs.common-react-ui == 'true'
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          npm publish ./packages/common-react-ui --access public
+        run: npm publish ./packages/common-react-ui --access public
 
       - name: Set up kubectl
         uses: azure/setup-kubectl@v3
