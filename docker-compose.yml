@@ -1,0 +1,29 @@
+x-host_redirect: &host_redirect host.myapp.com
+
+version: "3.8"
+
+services:
+  host:
+    build:
+      context: .
+      dockerfile: apps/host/Dockerfile
+    ports:
+      - "3000:80"
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: apps/dashboard/Dockerfile
+      args:
+        HOST_REDIRECT: *host_redirect
+    ports:
+      - "3001:80"
+
+  auth:
+    build:
+      context: .
+      dockerfile: apps/auth/Dockerfile
+      args:
+        HOST_REDIRECT: *host_redirect
+    ports:
+      - "3002:80"

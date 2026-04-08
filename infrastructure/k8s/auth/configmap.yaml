@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: auth-nginx-config
+  namespace: mf-workspace
+data:
+  default.conf.template: |
+    {{ .Files.Get "base-nginx-configmap.yaml" }}

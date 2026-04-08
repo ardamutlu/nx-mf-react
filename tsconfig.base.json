@@ -1,0 +1,25 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "dashboard/Module": ["apps/dashboard/src/remote-entry.ts"],
+      "auth/Module": ["apps/auth/src/remote-entry.ts"],
+      "@nx-mf-react/utils": ["libs/shared/utils/src/index.ts"],
+      "@ardamtl/common-react-ui": ["packages/common-react-ui/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

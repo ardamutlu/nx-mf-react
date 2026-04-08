@@ -1,0 +1,13 @@
+# nginx.conf.template
+server {
+  listen 80;
+
+  location = /remoteEntry.js {
+    root /usr/share/nginx/html;
+    add_header Cache-Control "no-store";
+  }
+
+  location / {
+    return 302 $scheme://$host_redirect$request_uri;
+  }
+}

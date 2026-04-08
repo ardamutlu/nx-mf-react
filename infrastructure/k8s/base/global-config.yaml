@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: global-mf-config
+  namespace: mf-workspace
+data:
+  host_redirect: "host.myapp.com"
