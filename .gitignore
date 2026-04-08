@@ -47,4 +47,6 @@ vite.config.*.timestamp*
 
 storybook-static
 .env
+.npmrc
 packages/common-react-ui/.env
+packages/common-react-ui/.npmrc
