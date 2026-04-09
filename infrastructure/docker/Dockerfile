@@ -18,6 +18,8 @@ RUN npx nx build $APP_NAME --prod --skip-nx-cache
 # --------------------------------------
 FROM nginx:alpine
 
+ARG APP_NAME
+
 COPY infrastructure/docker/nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /app/dist/apps/$APP_NAME /usr/share/nginx/html
 
