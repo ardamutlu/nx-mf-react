@@ -9,7 +9,8 @@ on:
       - 'apps/host/**'
       - 'apps/auth/**'
       - 'apps/dashboard/**'
-      - 'infrastructure/k8s/**'
+      - 'infrastructure/**'
+      - 'libs/**'
   workflow_dispatch:
 
 env:
