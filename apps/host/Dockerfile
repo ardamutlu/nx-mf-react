@@ -1,11 +1,11 @@
 FROM node:20-alpine AS builder
 WORKDIR /app
 
-COPY package.json package-lock.json nx.json ./
+COPY ../../package.json ../../package-lock.json ../../nx.json ./
 RUN npm ci
 
-COPY libs ./libs
-COPY apps/host ./apps/host
+COPY ../../libs ./libs
+COPY . .
 
 RUN npx nx build host --prod --skip-nx-cache
 
