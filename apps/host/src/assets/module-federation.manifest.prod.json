@@ -1,4 +1,4 @@
 {
-  "dashboard": "https://srv-dashboard.onrender.com/remoteEntry.js",
-  "auth": "https://srv-auth.onrender.com/remoteEntry.js"
+  "dashboard": "https://srv-dashboard.onrender.com/remote-entry.js",
+  "auth": "https://srv-auth.onrender.com/remote-entry.js"
 }
