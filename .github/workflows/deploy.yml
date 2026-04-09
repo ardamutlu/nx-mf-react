@@ -68,7 +68,7 @@ jobs:
           declare -A SERVICE_MAP
           SERVICE_MAP=(
             ["auth"]="srv-d7bhf1p5pdvs73dmlpig"
-            ["dashboard"]="srv-d7bhljp17lss73ajf6ug"
+            ["dashboard"]="srv-d7brnvqa214c73elc10g"
             ["host"]="srv-d7bhb3euk2gs738qqhbg"
           )
 
