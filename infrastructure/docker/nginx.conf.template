@@ -5,6 +5,9 @@ server {
   location = /remoteEntry.js {
     root /usr/share/nginx/html;
     add_header Cache-Control "no-store";
+    add_header Access-Control-Allow-Origin *;
+    add_header Access-Control-Allow-Methods 'GET, OPTIONS';
+    add_header Access-Control-Allow-Headers '*';
   }
 
   location / {

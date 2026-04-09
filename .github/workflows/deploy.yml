@@ -51,7 +51,7 @@ jobs:
             -t ${{ env.REGISTRY }}/${{ matrix.app }}:latest \
             --build-arg APP_NAME=${{ matrix.app }} \
             --build-arg HOST_REDIRECT=${{ env.HOST_REDIRECT }} \
-            -f apps/${{ matrix.app }}/Dockerfile \
+            -f infrastructure/docker/Dockerfile \
             .
           docker push ${{ env.REGISTRY }}/${{ matrix.app }}:latest
 
@@ -59,8 +59,22 @@ jobs:
         env:
           RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
         run: |
-          echo "Deploying ${{ matrix.app }} to Render..."
-          curl -X POST "https://api.render.com/deploy/srv-${{ matrix.app }}" \
+          # Map app names to Render service IDs
+          declare -A SERVICE_MAP
+          SERVICE_MAP=(
+            ["auth"]="srv-d7bhf1p5pdvs73dmlpig"
+            ["dashboard"]="srv-d7bhljp17lss73ajf6ug"
+            ["host"]="srv-d7bhb3euk2gs738qqhbg"
+          )
+
+          SERVICE_ID=${SERVICE_MAP[${{ matrix.app }}]}
+          if [ -z "$SERVICE_ID" ]; then
+            echo "No Render service ID found for app ${{ matrix.app }}"
+            exit 1
+          fi
+
+          echo "Deploying ${{ matrix.app }} to Render (service ID: $SERVICE_ID)..."
+          curl -X POST "https://api.render.com/deploy/$SERVICE_ID" \
             -H "Authorization: Bearer $RENDER_API_KEY" \
             -H "Accept: application/json"
 
