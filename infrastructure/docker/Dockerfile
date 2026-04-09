@@ -12,7 +12,7 @@ COPY libs ./libs
 COPY apps/$APP_NAME ./apps/$APP_NAME
 
 RUN npm ci
-RUN npx nx build $APP_NAME --prod --skip-nx-cache
+RUN npx nx build $APP_NAME --prod --skip-nx-cache --verbose
 
 # --------------------------------------
 # PRODUCTION
