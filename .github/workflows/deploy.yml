@@ -82,7 +82,7 @@ jobs:
       - name: Set up kubectl
         uses: azure/setup-kubectl@v3
         with:
-          version: '1.30.0'
+          version: 'latest'
 
       - name: Deploy to Kubernetes
         run: kubectl apply -k infrastructure/k8s
