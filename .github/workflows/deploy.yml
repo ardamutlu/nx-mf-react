@@ -55,6 +55,15 @@ jobs:
             .
           docker push ${{ env.REGISTRY }}/${{ matrix.app }}:latest
 
+      - name: Deploy to Render
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+        run: |
+          echo "Deploying ${{ matrix.app }} to Render..."
+          curl -X POST "https://api.render.com/deploy/srv-${{ matrix.app }}" \
+            -H "Authorization: Bearer $RENDER_API_KEY" \
+            -H "Accept: application/json"
+
   npm-publish:
     runs-on: ubuntu-latest
     needs: build-and-push
