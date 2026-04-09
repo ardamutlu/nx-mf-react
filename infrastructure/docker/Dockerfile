@@ -7,9 +7,7 @@ WORKDIR /app
 
 ARG APP_NAME
 
-COPY package.json package-lock.json nx.json ./
-COPY libs ./libs
-COPY apps/$APP_NAME ./apps/$APP_NAME
+COPY . .
 
 RUN npm ci
 RUN npx nx build $APP_NAME --prod --skip-nx-cache --verbose
